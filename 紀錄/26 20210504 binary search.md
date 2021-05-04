@@ -59,6 +59,7 @@ function myPow(x: number, n: number): number {
   if (n % 2 == 0) return myPow(x * x, n / 2);
   else return x * myPow(x * x, Math.floor(n / 2));
 };
+```
 
 ```typescript
 /** Iteration in TS by Louis */
@@ -75,6 +76,7 @@ function myPow(x: number, n: number): number {
   }
   
   while (exponent > 1) {
+      
     if (exponent % 2 == 0) {
       base = base * base;
       exponent = exponent / 2;
@@ -88,12 +90,12 @@ function myPow(x: number, n: number): number {
   
   return constant * base;
 }
-
+```
 
 * EASY	 367	 Valid Perfect Square	 https://leetcode.com/problems/valid-perfect-square
 
 ```typescript
-/** Iteration for `Valid Perfect Square` in TS by Louis*/
+/** Iteration for `Valid Perfect Square` in TS by Louis */
 function isPerfectSquare(num: number): boolean {
   if (num === 1) return true;
   
@@ -108,6 +110,7 @@ function isPerfectSquare(num: number): boolean {
   }
   return false;
 };
+```
 ```
     // newton method 十分逼近法
   func _newton_isPerfectSquare(_ num: Int) -> Bool {
@@ -140,7 +143,27 @@ function isPerfectSquare(num: number): boolean {
         }
         return helper(0, num)
     }
+```
 * EASY	 744	 Find Smallest Letter Greater Than Target	 https://leetcode.com/problems/find-smallest-letter-greater-than-target
+
+```typescript=
+/** Iteration for `Find Smallest Letter Greater Than Target` in TS */
+function nextGreatestLetter(letters: string[], target: string): string {
+  let lower = 0;
+  let upper = letters.length - 1;
+  let middle: number;
+  
+  if (target < letters[0] || target >= letters[upper]) return letters[0];
+  
+  while (lower <= upper) {
+    middle = lower + Math.floor((upper - lower) / 2);
+    if (target < letters[middle + 1] && letters[middle] <= target) return letters[middle + 1];
+    else if (letters[middle] > target) upper = middle - 1;
+    else lower = middle + 1;
+  }
+  caseToggle() a -> A, B -> b
+}
+```
 
 * More Practices
 
