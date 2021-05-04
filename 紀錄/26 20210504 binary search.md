@@ -109,7 +109,37 @@ function isPerfectSquare(num: number): boolean {
   return false;
 };
 ```
-
+    // newton method 十分逼近法
+  func _newton_isPerfectSquare(_ num: Int) -> Bool {
+          var i = num
+          while true {
+              let p = i * i
+              if p <= num {return p == num}
+              i = (i + num / i) >> 1
+          }
+    }
+    // newton method 十分逼近法 recursion
+      func isPerfectSquare(_ num: Int) -> Bool {
+          func helper(_ i: Int) -> Bool { 
+             let p = i * i 
+              return p <= num ? p == num : helper((i + num / i) >> 1) 
+          }
+          return helper(num)
+    }
+    // binary search
+    func isPerfectSquare(_ num: Int) -> Bool {
+        if num == 1 {return true}
+        func helper(_ l: Int, _ u: Int) -> Bool {
+            if l >= u {return false}
+            let m = (u - l) / 2 + l
+            let p = m * m
+            if p > num {return helper(l, m)}
+            if p < num {return helper(m+1, u)}
+            return true
+           
+        }
+        return helper(0, num)
+    }
 * EASY	 744	 Find Smallest Letter Greater Than Target	 https://leetcode.com/problems/find-smallest-letter-greater-than-target
 
 * More Practices
